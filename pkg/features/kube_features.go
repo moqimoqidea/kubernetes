@@ -484,6 +484,7 @@ const (
 	// owner: @aojea
 	// kep: https://kep.k8s.io/1880
 	// alpha: v1.27
+	// beta: v1.31
 	//
 	// Enables the dynamic configuration of Service IP ranges
 	MultiCIDRServiceAllocator featuregate.Feature = "MultiCIDRServiceAllocator"
@@ -1019,7 +1020,7 @@ var defaultKubernetesFeatureGates = map[featuregate.Feature]featuregate.FeatureS
 
 	DisableNodeKubeProxyVersion: {Default: true, PreRelease: featuregate.Beta},
 
-	DevicePluginCDIDevices: {Default: true, PreRelease: featuregate.GA},
+	DevicePluginCDIDevices: {Default: true, PreRelease: featuregate.GA, LockToDefault: true}, // remove in 1.33
 
 	DynamicResourceAllocation: {Default: false, PreRelease: featuregate.Alpha},
 
@@ -1095,7 +1096,7 @@ var defaultKubernetesFeatureGates = map[featuregate.Feature]featuregate.FeatureS
 
 	MinDomainsInPodTopologySpread: {Default: true, PreRelease: featuregate.GA, LockToDefault: true}, // remove in 1.32
 
-	MultiCIDRServiceAllocator: {Default: false, PreRelease: featuregate.Alpha},
+	MultiCIDRServiceAllocator: {Default: false, PreRelease: featuregate.Beta},
 
 	NewVolumeManagerReconstruction: {Default: true, PreRelease: featuregate.GA, LockToDefault: true}, // remove in 1.32
 
@@ -1274,9 +1275,11 @@ var defaultKubernetesFeatureGates = map[featuregate.Feature]featuregate.FeatureS
 
 	genericfeatures.WatchBookmark: {Default: true, PreRelease: featuregate.GA, LockToDefault: true},
 
+	genericfeatures.WatchCacheInitializationPostStartHook: {Default: false, PreRelease: featuregate.Beta},
+
 	genericfeatures.WatchFromStorageWithoutResourceVersion: {Default: false, PreRelease: featuregate.Beta},
 
-	genericfeatures.WatchList: {Default: false, PreRelease: featuregate.Alpha},
+	genericfeatures.WatchList: {Default: true, PreRelease: featuregate.Beta},
 
 	genericfeatures.ZeroLimitedNominalConcurrencyShares: {Default: true, PreRelease: featuregate.GA, LockToDefault: true}, // remove in 1.32
 
